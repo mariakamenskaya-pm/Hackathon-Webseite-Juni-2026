@@ -1,0 +1,649 @@
+/* --- Global Styles --- */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: relative;
+	min-height: 100vh;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #e5e5e5; /* Light gray background from image */
+	color: #000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px 20px;
+	overflow-x: hidden;
+}
+
+/* Desktop-style launchers (top-left icons) */
+.desktop-launchers {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 10000;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.desktop-launcher-btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0px;
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	font-size: 11px;
+}
+
+.desktop-launcher-btn:hover .desktop-launcher-label {
+	background-color: #fff;
+	color: #000;
+}
+
+.desktop-launcher-icon {
+	width: 64px;
+	height: 64px;
+	border: none;
+	background: center / contain no-repeat;
+	background-size: contain;
+	box-shadow: none;
+}
+
+.about-launcher-icon {
+	background-image: url("images/folder-icon.png");
+}
+
+.schedule-launcher-icon {
+	background-image: url("images/calender-icon.png");
+}
+
+.notepad-launcher-icon {
+	background-image: url("images/light-icon.png");
+}
+
+.faq-launcher-icon {
+	background-image: url("images/question-icon.png");
+}
+
+body.dragging-window {
+	user-select: none;
+	cursor: grabbing;
+}
+
+/* --- Header Section --- */
+
+.page-header-container {
+	height: 80vh;
+}
+
+.page-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.page-header h1 {
+	font-size: 56px;
+	font-weight: normal;
+	margin-bottom: 70px;
+	margin-top: 60px;
+	letter-spacing: -1px;
+}
+
+.page-header p {
+	font-size: 24px;
+	margin-bottom: 60px;
+}
+
+/* --- Event Details --- */
+.event-details {
+	display: flex;
+	justify-content: center;
+	gap: 100px;
+	margin-bottom: 60px;
+}
+
+.details-text p {
+	font-size: 18px;
+	line-height: 1.6;
+}
+
+.retro-pc-icon {
+	width: 120px;
+	height: auto;
+}
+
+/* --- Window Layouts (The Retro Boxes) --- */
+.windows-container {
+	width: 100%;
+	max-width: 900px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.window {
+	background: #fff;
+	border: 1px solid #000;
+	box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
+	margin-bottom: 40px;
+	width: 100%;
+	/* Added for stability */
+	touch-action: none; /* Prevents scrolling while dragging on mobile */
+	user-select: none; /* Prevents text selection while dragging */
+	position: relative; /* Starts relative, JS will switch to absolute */
+	transition:
+		transform 0.1s ease-out,
+		height 0.2s ease-in-out;
+}
+
+/* Add a "active" class to bring the dragged window to the very top */
+.window-active {
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2); /* Add a deeper shadow when moving */
+	cursor: grabbing !important;
+	z-index: 9999 !important;
+}
+
+.window-title-bar {
+	background-color: #0d6efd; /* Bright Retro Blue */
+	color: #fff;
+	padding: 5px 10px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
+	user-select: none;
+}
+
+.notepad-title {
+	background-color: #fff;
+	color: #000;
+	border-bottom: 1px solid #000;
+}
+
+.window-controls {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px; /* Small, square retro size */
+	height: 14px;
+	background-color: #c0c0c0; /* Classic light grey */
+	font-size: 10px; /* Pixelated look */
+	font-weight: bold;
+	color: #000;
+	cursor: pointer;
+	margin-right: 2px;
+
+	/* The "Raised" Border effect */
+	border: 1px solid;
+	border-color: #ffffff #808080 #808080 #ffffff; /* Top/Left white, Bottom/Right dark grey */
+}
+/* The Crunchy Hover State */
+.window-controls:hover {
+	background-color: #e81123; /* Classic Red Close */
+	color: #ffffff;
+	border-color: #ffffff #000000 #000000 #ffffff; /* Sharper contrast on hover */
+}
+
+/* The "Pressed" Active State */
+.window-controls:active {
+	/* Flips the border colors to look pushed in */
+	border-color: #808080 #ffffff #ffffff #808080;
+	padding-top: 1px; /* Micro-shift for mechanical feel */
+	padding-left: 1px;
+}
+
+.window-content {
+	padding: 20px;
+}
+
+/* --- Specific Windows --- */
+.window-about {
+	z-index: 1;
+}
+
+.about-content {
+	display: flex;
+	gap: 30px;
+}
+
+.about-text {
+	flex: 1;
+	font-size: 16px;
+	line-height: 1.6;
+	margin-bottom: 40px;
+}
+
+.about-text p {
+	margin-bottom: 15px;
+}
+
+.about-media {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 65px;
+}
+
+.about-media img {
+	width: 100%;
+	border: 1px solid #000;
+}
+
+.window-schedule {
+	width: 350px;
+	align-self: flex-start;
+	margin-top: -80px; /* Creates the overlapping effect */
+	margin-left: 30px;
+	z-index: 2;
+}
+
+.window-notepad {
+	align-self: flex-end;
+	width: 70%;
+	margin-top: 20px;
+	position: relative;
+}
+
+.window-notepad .window-controls {
+	/* Top and Left become dark grey/black, Bottom and Right stay dark for a 'cut-out' look */
+	border-color: #000000 #808080 #808080 #000000;
+	color: #000; /* Ensure the X is black */
+}
+
+.window-notepad .window-controls:hover {
+	background-color: #e81123; /* Keep the red hover */
+	color: #ffffff;
+	border-color: #000000; /* Solid black border on hover */
+}
+
+.window-notepad .window-controls:active {
+	border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.notepad-content {
+	font-size: 16px;
+	line-height: 1.8;
+	padding-right: 40px; /* Room for fake scrollbar */
+}
+
+.fake-scrollbar {
+	position: absolute;
+	right: 0;
+	top: 25px; /* below title bar */
+	bottom: 0;
+	width: 20px;
+	background: #d4d0c8;
+	border-left: 1px solid #000;
+	display: flex;
+	flex-direction: column;
+}
+
+.scrollbar-up,
+.scrollbar-down {
+	height: 20px;
+	background: #dfdfdf;
+	border: 1px solid #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	cursor: pointer;
+}
+
+.scrollbar-track {
+	flex: 1;
+}
+
+.window-faq {
+	width: 80%;
+	align-self: center;
+	margin-top: 40px;
+}
+
+.arrow-list {
+	list-style: none;
+}
+
+.arrow-list li {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+/* --- Schedule Accordion --- */
+.schedule-accordion {
+	width: 100%;
+}
+
+.accordion-item + .accordion-item {
+	margin-top: 10px;
+}
+
+.accordion-trigger {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: transparent;
+	border: none;
+	padding: 0;
+	font-size: 14px;
+	text-align: left;
+	cursor: pointer;
+}
+
+.accordion-panel {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.25s ease;
+}
+
+.schedule-table {
+	width: 100%;
+	margin-top: 12px;
+	border: 1px solid #9a9a9a;
+	border-collapse: collapse;
+}
+
+.schedule-table td {
+	border: 1px solid #9a9a9a;
+	padding: 10px 12px;
+	vertical-align: top;
+	font-size: 13px;
+}
+
+.schedule-table .time-col {
+	width: 34%;
+	white-space: nowrap;
+}
+
+/* --- FAQ Accordion --- */
+.faq-accordion {
+	width: 100%;
+}
+
+.faq-item + .faq-item {
+	margin-top: 10px;
+}
+
+.faq-trigger {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: transparent;
+	border: none;
+	padding: 0;
+	font-size: 14px;
+	text-align: left;
+	cursor: pointer;
+}
+
+.faq-panel {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.25s ease;
+}
+
+.faq-panel p {
+	font-size: 13px;
+	margin-top: 10px;
+	line-height: 1.6;
+}
+
+/* --- Buttons & CTAs --- */
+.retro-btn {
+	background-color: #d9d9d9;
+	border: 2px solid #000;
+	padding: 10px 40px;
+	font-weight: bold;
+	cursor: pointer;
+	text-transform: uppercase;
+	box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+	transition: all 0.1s;
+}
+/* --- Base Hover for ALL retro buttons --- */
+.retro-btn:hover {
+	background-color: #e0e0e0; /* Light grey highlight */
+	box-shadow: 4px 4px 0px #000; /* Strengthens the shadow */
+	transform: translate(-1px, -1px); /* Slight lift */
+}
+.retro-btn:active {
+	background-color: #bdbdbd; /* Darker grey when pressed */
+	box-shadow: 1px 1px 0px #000;
+	transform: translate(2px, 2px);
+}
+
+/* --- Large Button Hover (Grey Background) --- */
+.retro-btn.large-btn:hover {
+	background-color: #e0e0e0; /* Slightly lighter grey */
+	/* Enhance the 3D shadow on hover to make it pop */
+	box-shadow: 4px 4px 0px #000;
+	transform: translate(-1px, -1px);
+}
+
+/* --- Active States for both (The "Push" Effect) --- */
+.retro-btn.large-btn:active {
+	background-color: #bdbdbd; /* Darker grey when pressed */
+	box-shadow: 1px 1px 0px #000;
+	transform: translate(2px, 2px);
+}
+
+/* --- Border Button Hover (White Background) --- */
+.retro-btn.border-btn:hover {
+	background-color: #f0f0f0;
+	box-shadow: none !important;
+	transform: none !important;
+}
+
+.retro-btn.border-btn:active {
+	background-color: #333; /* Darker fill when pressed */
+	transform: none !important;
+}
+
+.arrows-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin: 40px 0;
+}
+
+.large-btn {
+	padding: 15px 60px;
+	font-size: 16px;
+}
+
+/* --- Alert Window --- */
+.window-alert {
+	width: 400px;
+	text-align: center;
+	transform-origin: center;
+}
+
+.window-alert-closing {
+	animation: alert-close 0.2s ease-out forwards;
+}
+
+.window-alert-opening {
+	animation: alert-open 0.2s ease-out forwards;
+}
+
+@keyframes alert-close {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(0.85);
+		opacity: 0;
+	}
+}
+
+@keyframes alert-open {
+	from {
+		transform: scale(0.85);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.alert-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Centers the OK button at the bottom */
+}
+
+.alert-body {
+	display: flex;
+	align-items: center; /* Vertically centers icon with text */
+	gap: 20px; /* Space between icon and text */
+	margin-bottom: 20px; /* Space above the OK button */
+	text-align: left; /* Ensures text stays left-aligned */
+}
+
+.alert-icon {
+	width: 40px;
+	height: 40px;
+	flex-shrink: 0; /* Prevents the icon from getting squashed */
+}
+
+.border-btn {
+	background-color: #fff;
+	border: 1px solid #000;
+	padding: 5px 30px;
+	box-shadow: none;
+}
+
+/* --- Footer --- */
+.page-footer {
+	width: 100%;
+	max-width: 900px;
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.logos-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 80px;
+}
+
+.logo-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.logo-item img {
+	max-height: 50px;
+	object-fit: contain;
+}
+
+.logo-item a {
+	color: #000;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.contact-info {
+	font-size: 12px;
+}
+
+/* --- Responsive Design (Mobile) --- */
+@media (max-width: 768px) {
+	.about-content {
+		flex-direction: column;
+	}
+
+	.window-schedule {
+		margin-top: 20px;
+		margin-left: 0;
+		width: 100%;
+		align-self: center;
+	}
+
+	.window-notepad {
+		width: 100%;
+	}
+
+	.window-faq {
+		width: 100%;
+	}
+
+	.window-alert {
+		width: 100%;
+	}
+
+	.logos-container {
+		flex-direction: column;
+	}
+
+	.cta-wrapper {
+		flex-direction: column;
+	}
+
+	.cta-arrow {
+		transform: rotate(90deg); /* Point down on mobile */
+	}
+
+	/* Custom Cursor - Apply to everything */
+	html,
+	body,
+	button,
+	a {
+		cursor: url("custom cursor.png"), auto !important;
+	}
+
+	/* Draggable Handle Indicator */
+	.window-title-bar {
+		cursor: move; /* Shows user they can grab it */
+	}
+
+	/* States for Closing/Minimizing */
+	.window.hidden {
+		display: none;
+	}
+
+	.window.minimized {
+		height: 32px; /* Only show title bar */
+		overflow: hidden;
+	}
+
+	/* Windows XP style button hovers */
+	.window-controls span {
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		text-align: center;
+		line-height: 16px;
+		border: 1px solid transparent;
+		margin-left: 2px;
+	}
+
+	.window-controls span:hover {
+		background-color: rgba(255, 255, 255, 0.3);
+		border-color: #fff;
+	}
+
+	.window-controls span:active {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
