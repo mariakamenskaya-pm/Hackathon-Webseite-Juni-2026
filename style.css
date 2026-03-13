@@ -135,6 +135,7 @@ body.dragging-window {
 
 .details-text {
 	text-align: center;
+	color: #0d6efd; /* Bright Retro Blue */
 }
 
 .details-text p {
