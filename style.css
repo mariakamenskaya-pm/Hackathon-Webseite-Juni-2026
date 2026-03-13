@@ -558,6 +558,28 @@ body.dragging-window {
 	}
 }
 
+@keyframes window-jump {
+	0% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(-10px);
+	}
+	50% {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(-5px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.window-jump {
+	animation: window-jump 0.35s ease;
+}
+
 .alert-content {
 	display: flex;
 	flex-direction: column;
@@ -629,33 +651,98 @@ body.dragging-window {
 	font-size: 12px;
 }
 
-/* --- Responsive Design (Mobile) --- */
+/* --- Responsive Design (Tablet & Mobile) --- */
+
+/* Tablet (medium screens) */
+@media (max-width: 1024px) {
+	.page-header h1 {
+		font-size: 48px;
+	}
+
+	.page-header p {
+		font-size: 20px;
+	}
+
+	.event-details {
+		gap: 40px;
+	}
+
+	.retro-pc-icon {
+		width: 100px;
+	}
+
+	.windows-container {
+		padding: 0 16px;
+	}
+}
+
+/* Mobile (small screens) */
 @media (max-width: 768px) {
+	/* Stack the main content vertically */
 	.about-content {
 		flex-direction: column;
 	}
 
-	.window-schedule {
-		margin-top: 20px;
-		margin-left: 0;
+	/* Make windows full-width and avoid overflow */
+	.window-schedule,
+	.window-notepad,
+	.window-faq,
+	.window-alert {
 		width: 100%;
+		max-width: 100%;
+		margin-left: 0;
 		align-self: center;
 	}
 
-	.window-notepad {
-		width: 100%;
+	/* Prevent schedule from overlapping the about window on mobile */
+	.window-schedule {
+		margin-top: 20px;
 	}
 
-	.window-faq {
-		width: 100%;
+	/* Simplify launchers for small screens */
+	.desktop-launchers {
+		flex-direction: row;
+		bottom: 16px;
+		top: auto;
+		left: 50%;
+		transform: translateX(-50%);
+		background: rgba(255, 255, 255, 0.85);
+		border-radius: 8px;
+		padding: 8px 10px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 	}
 
-	.window-alert {
-		width: 100%;
+	.desktop-launcher-btn {
+		font-size: 11px;
+		gap: 4px;
 	}
 
+	.desktop-launcher-icon {
+		width: 44px;
+		height: 44px;
+	}
+
+	/* Reduce header sizing for smaller screens */
+	.page-header h1 {
+		font-size: 36px;
+		margin-bottom: 30px;
+	}
+
+	.page-header p {
+		font-size: 18px;
+		margin-bottom: 45px;
+	}
+
+	/* Reduce content spacing */
+	.event-details {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	/* Keep the footer compact */
 	.logos-container {
 		flex-direction: column;
+		gap: 40px;
 	}
 
 	.cta-wrapper {

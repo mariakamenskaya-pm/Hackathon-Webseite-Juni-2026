@@ -770,8 +770,31 @@
 				});
 			}
 
-			// About window launcher (top-left icon)
+			// Add a quick "jump" animation when the user clicks a launcher for an already-open window.
+			// (Matches the feel of the alert window's button behavior.)
+			const applyJumpEffect = (win) => {
+				win.classList.remove("window-jump");
+				// Force a reflow so the animation can restart.
+				void win.offsetWidth;
+				win.classList.add("window-jump");
+				win.addEventListener(
+					"animationend",
+					() => win.classList.remove("window-jump"),
+					{ once: true },
+				);
+			};
+
 			const bringWindowToFront = (win) => {
+				const isVisible =
+					win.style.display !== "none" &&
+					getComputedStyle(win).display !== "none";
+				const isMinimized = win.classList.contains("minimized");
+
+				// If already open, give it a little "jump" to show it was triggered.
+				if (isVisible && !isMinimized) {
+					applyJumpEffect(win);
+				}
+
 				win.style.display = "";
 				win.classList.remove("minimized");
 				highestZ++;
