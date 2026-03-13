@@ -506,6 +506,7 @@
 					organizer: "Organisator",
 					contact: "kontakt@mail.com",
 					language: "Language",
+					learnMore: "Learn more",
 				},
 				de: {
 					title: "CODE THE STATE HACKATHON 2026",
@@ -566,6 +567,7 @@
 					organizer: "Organisator",
 					contact: "kontakt@mail.com",
 					language: "Sprache",
+					learnMore: "Erfahre mehr",
 				},
 			};
 
@@ -646,15 +648,14 @@
 				document.querySelector(
 					".window-faq .window-title-bar span",
 				).textContent = translations[lang].faqTitle;
-				const faqTriggers = document.querySelectorAll(
-					".faq-trigger span:last-child",
-				);
-				faqTriggers[0].textContent = translations[lang].faq1;
-				faqTriggers[1].textContent = translations[lang].faq2;
-				faqTriggers[2].textContent = translations[lang].faq3;
-				faqTriggers[3].textContent = translations[lang].faq4;
-				faqTriggers[4].textContent = translations[lang].faq5;
-				faqTriggers[5].textContent = translations[lang].faq6;
+				const faqItems = document.querySelectorAll(".faq-item");
+				faqItems.forEach((item, index) => {
+					const trigger = item.querySelector(".faq-trigger");
+					const questionKey = "faq" + (index + 1);
+					trigger.innerHTML =
+						'<span class="accordion-arrow">&rarr;</span> ' +
+						translations[lang][questionKey];
+				});
 				const faqPanels = document.querySelectorAll(".faq-panel p");
 				faqPanels.forEach(
 					(p) => (p.textContent = translations[lang].faq1Answer),
@@ -680,8 +681,18 @@
 				document.querySelector(
 					".contact-info p:last-child",
 				).textContent = translations[lang].contact;
-				document.querySelector(".language-launcher-label").textContent =
-					translations[lang].language;
+				const langLabel = document.querySelector(
+					".language-launcher-label",
+				);
+				if (langLabel) {
+					langLabel.textContent = translations[lang].language;
+				}
+				// Correct way to translate multiple "Learn more" links
+				const logoLinks = document.querySelectorAll(".logo-item a");
+				logoLinks.forEach((link) => {
+					link.textContent =
+						translations[lang].learnMore || "Learn more";
+				});
 			}
 
 			const windows = document.querySelectorAll(".window");

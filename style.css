@@ -133,6 +133,10 @@ body.dragging-window {
 	margin-bottom: 60px;
 }
 
+.details-text {
+	text-align: center;
+}
+
 .details-text p {
 	font-size: 18px;
 	line-height: 1.6;
