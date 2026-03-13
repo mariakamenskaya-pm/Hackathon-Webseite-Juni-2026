@@ -42,8 +42,8 @@ body {
 }
 
 .desktop-launcher-btn:hover .desktop-launcher-label {
-	background-color: #fff;
-	color: #000;
+	background-color: #000080; /* Classic Navy Blue */
+	color: #ffffff; /* White text */
 }
 
 .desktop-launcher-icon {
@@ -601,7 +601,11 @@ body.dragging-window {
 .logo-item a {
 	color: #000;
 	font-size: 12px;
-	text-decoration: underline;
+}
+
+.logo-item a:hover {
+	background-color: #000080; /* Classic Navy Blue */
+	color: #ffffff; /* White text */
 }
 
 .contact-info {
