@@ -76,12 +76,6 @@
 					<p>Im Zukunftspark 11/13</p>
 					<p>74076 Heilbronn</p>
 				</div>
-				<img
-					src="images/retro-computer.svg"
-					alt="Retro Computer"
-					width="100"
-					class="retro-pc-icon"
-				/>
 			</div>
 		</section>
 
@@ -690,6 +684,18 @@
 					);
 					if (!okTarget && !controlsTarget) return;
 					e.stopPropagation();
+
+					// Play error sound
+					const errorAudio = document.getElementById("error-sound");
+					if (errorAudio) {
+						errorAudio.currentTime = 0;
+						errorAudio
+							.play()
+							.catch((err) =>
+								console.error("Playback failed:", err),
+							);
+					}
+
 					playAlertCycle();
 				});
 			}
@@ -827,5 +833,10 @@
 					if (faqWindow) bringWindowToFront(faqWindow);
 				});
 		</script>
+		<audio
+			id="error-sound"
+			src="sounds/error-sound.mp3"
+			preload="auto"
+		></audio>
 	</body>
 </html>
