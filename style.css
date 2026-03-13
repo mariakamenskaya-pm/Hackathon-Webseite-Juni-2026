@@ -5,6 +5,23 @@
 	padding: 0;
 }
 
+/* 1. Set the custom cursor for the general background and static text */
+html,
+body {
+	cursor:
+		url("images/custom-cursor-filled.png") 0 0,
+		auto !important;
+}
+
+/* Ensure it stays active even when hovering over buttons and links */
+a,
+button,
+.retro-btn,
+.window-controls,
+.accordion-trigger .desktop-launcher .desktop-launcher-label [role="button"] {
+	cursor: pointer !important;
+}
+
 body {
 	position: relative;
 	min-height: 100vh;
@@ -654,7 +671,9 @@ body.dragging-window {
 	body,
 	button,
 	a {
-		cursor: url("custom cursor.png"), auto !important;
+		cursor:
+			url("images/custom-cursor-filled.png") 0 0,
+			auto !important;
 	}
 
 	/* Draggable Handle Indicator */
