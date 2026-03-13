@@ -506,6 +506,10 @@
 					organizer: "Organisator",
 					contact: "kontakt@mail.com",
 					language: "Language",
+					aboutLauncher: "About",
+					scheduleLauncher: "Schedule",
+					notepadLauncher: "Hackathon",
+					faqLauncher: "FAQ",
 					learnMore: "Learn more",
 				},
 				de: {
@@ -567,6 +571,10 @@
 					organizer: "Organisator",
 					contact: "kontakt@mail.com",
 					language: "Sprache",
+					aboutLauncher: "Über",
+					scheduleLauncher: "Zeitplan",
+					notepadLauncher: "Hackathon",
+					faqLauncher: "FAQ",
 					learnMore: "Erfahre mehr",
 				},
 			};
@@ -681,12 +689,25 @@
 				document.querySelector(
 					".contact-info p:last-child",
 				).textContent = translations[lang].contact;
-				const langLabel = document.querySelector(
-					".language-launcher-label",
-				);
-				if (langLabel) {
-					langLabel.textContent = translations[lang].language;
-				}
+
+				// Translate desktop launchers (Language / About / Schedule / Hackathon / FAQ)
+				const launcherConfigs = [
+					{ parent: ".language-launcher", key: "language" },
+					{ parent: ".about-launcher", key: "aboutLauncher" },
+					{ parent: ".schedule-launcher", key: "scheduleLauncher" },
+					{ parent: ".notepad-launcher", key: "notepadLauncher" },
+					{ parent: ".faq-launcher", key: "faqLauncher" },
+				];
+				launcherConfigs.forEach(({ parent, key }) => {
+					const label = document.querySelector(
+						`${parent} .desktop-launcher-label`,
+					);
+					if (label) {
+						label.textContent =
+							translations[lang][key] || label.textContent;
+					}
+				});
+
 				// Correct way to translate multiple "Learn more" links
 				const logoLinks = document.querySelectorAll(".logo-item a");
 				logoLinks.forEach((link) => {
