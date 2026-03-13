@@ -8,6 +8,19 @@
 	</head>
 	<body>
 		<div class="desktop-launchers">
+			<div class="desktop-launcher language-launcher">
+				<button
+					type="button"
+					class="desktop-launcher-btn language-launcher-btn"
+				>
+					<div
+						class="desktop-launcher-icon language-launcher-icon"
+						aria-hidden="true"
+					></div>
+					<span class="desktop-launcher-label">Language</span>
+				</button>
+			</div>
+
 			<div class="desktop-launcher about-launcher">
 				<button
 					type="button"
@@ -432,6 +445,245 @@
 			</div>
 		</footer>
 		<script>
+			// Language translations
+			const translations = {
+				en: {
+					title: "CODE THE STATE HACKATHON 2026",
+					subtitle: "Komm.ONE x Public Makers x IPAI Foundation",
+					date: "Date: 12-13 June",
+					location: "Location: at IPAI Foundation",
+					address: "Im Zukunftspark 11/13",
+					city: "74076 Heilbronn",
+					aboutTitle: "About",
+					aboutText1:
+						"CODE THE STATE is a two-day hackathon organized through a collaboration between Komm.ONE, Public Makers and the IPAI Foundation. During the event, participants will work in teams of 4 to tackle real digital public sector challenges.",
+					aboutText2:
+						"Throughout the hackathon, participants will have access to mentors from Komm.ONE who will be on-site to help with the challenges faced by the public sector and support them when they encounter technical or conceptual difficulties.",
+					aboutText3:
+						"On the second day, each team will present their solution in a final pitch, after which a jury will select the winning teams. Please refer to the daily schedule and FAQs for more detailed information.",
+					scheduleTitle: "Schedule (Tentative)",
+					day1: "Day 1: 12/06/2026 Friday",
+					checkin: "Check-in, welcome, and intro",
+					briefing: "Challenge briefing + team formation",
+					hacking1: "Hacking sessions + mentor rounds",
+					day2: "Day 2: 13/06/2026 Saturday",
+					hacking2: "Final hacking + preparation",
+					demos: "Demos & pitches",
+					awards: "Jury deliberation + awards",
+					notepadTitle: "CODE YOUR STATE!.txt",
+					notepadText1:
+						"Municipal systems shape our everyday lives - housing, mobility, administration, services. Yet many of these core processes were designed decades ago.",
+					notepadText2:
+						"<br />At CODE THE STATE, we give young builders full freedom to rethink the recurring challenges municipalities face - not by digitizing old workflows, but by questioning their underlying logic.",
+					notepadText3:
+						"<br />In collaboration with Komm.ONE, hosted at the Innovation Park Artificial Intelligence (IPAI), this hackathon is simple in principle:",
+					notepadText4:
+						"<br /><strong>If you're the generation that has to live with public systems for the next 50 years, you should be allowed to redesign them.</strong>",
+					faqTitle: "FAQ",
+					faq1: "I am not a student, can I still join?",
+					faq1Answer:
+						"Unfortunately, this hackathon is only open to current students.",
+					faq2: "I have never done any coding before, can I still apply?",
+					faq2Answer:
+						"Unfortunately, this hackathon is only open to current students.",
+					faq3: "Is it free to attend the hackathon?",
+					faq3Answer:
+						"Unfortunately, this hackathon is only open to current students.",
+					faq4: "Who owns the intellectual property of the finished product?",
+					faq4Answer:
+						"Unfortunately, this hackathon is only open to current students.",
+					faq5: "What is the prize?",
+					faq5Answer:
+						"Unfortunately, this hackathon is only open to current students.",
+					faq6: "I want to attend, but I live far away from Heilbronn, where can I stay?",
+					faq6Answer:
+						"Unfortunately, this hackathon is only open to current students.",
+					alertTitle: "Important!",
+					alertText:
+						"If you are registering as a team, each team member must register individually and use the exact same team name.",
+					ok: "OK",
+					signup: "SIGN UP!",
+					organizer: "Organisator",
+					contact: "kontakt@mail.com",
+					language: "Language",
+				},
+				de: {
+					title: "CODE THE STATE HACKATHON 2026",
+					subtitle: "Komm.ONE x Public Makers x IPAI Foundation",
+					date: "Datum: 12-13 Juni",
+					location: "Ort: bei IPAI Foundation",
+					address: "Im Zukunftspark 11/13",
+					city: "74076 Heilbronn",
+					aboutTitle: "Über",
+					aboutText1:
+						"CODE THE STATE ist ein zweitägiger Hackathon, der durch eine Zusammenarbeit zwischen Komm.ONE, Public Makers und der IPAI Foundation organisiert wird. Während der Veranstaltung werden die Teilnehmer in Teams von 4 Personen arbeiten, um reale digitale Herausforderungen des öffentlichen Sektors anzugehen.",
+					aboutText2:
+						"Während des Hackathons haben die Teilnehmer Zugang zu Mentoren von Komm.ONE, die vor Ort sind, um bei den Herausforderungen des öffentlichen Sektors zu helfen und sie zu unterstützen, wenn sie auf technische oder konzeptionelle Schwierigkeiten stoßen.",
+					aboutText3:
+						"Am zweiten Tag wird jedes Team seine Lösung in einem finalen Pitch präsentieren, woraufhin eine Jury die Gewinnerteams auswählt. Bitte beziehen Sie sich auf den Tagesplan und die FAQs für weitere detaillierte Informationen.",
+					scheduleTitle: "Zeitplan (vorläufig)",
+					day1: "Tag 1: 12/06/2026 Freitag",
+					checkin: "Check-in, Begrüßung und Einführung",
+					briefing: "Herausforderungs-Briefing + Team-Bildung",
+					hacking1: "Hacking-Sessions + Mentor-Runden",
+					day2: "Tag 2: 13/06/2026 Samstag",
+					hacking2: "Finales Hacking + Vorbereitung",
+					demos: "Demos & Pitches",
+					awards: "Jury-Beratung + Auszeichnungen",
+					notepadTitle: "CODE YOUR STATE!.txt",
+					notepadText1:
+						"Kommunale Systeme prägen unser tägliches Leben - Wohnung, Mobilität, Verwaltung, Dienstleistungen. Doch viele dieser Kernprozesse wurden vor Jahrzehnten entworfen.",
+					notepadText2:
+						"<br />Bei CODE THE STATE geben wir jungen Erbauern volle Freiheit, die wiederkehrenden Herausforderungen, denen sich Kommunen stellen, neu zu denken - nicht durch Digitalisierung alter Arbeitsabläufe, sondern durch Infragestellung ihrer zugrunde liegenden Logik.",
+					notepadText3:
+						"<br />In Zusammenarbeit mit Komm.ONE, ausgerichtet im Innovationspark Künstliche Intelligenz (IPAI), ist dieser Hackathon im Prinzip einfach:",
+					notepadText4:
+						"<br /><strong>Wenn Sie die Generation sind, die die nächsten 50 Jahre mit öffentlichen Systemen leben muss, sollten Sie sie neu gestalten dürfen.</strong>",
+					faqTitle: "FAQ",
+					faq1: "Ich bin kein Student, kann ich trotzdem teilnehmen?",
+					faq1Answer:
+						"Leider ist dieser Hackathon nur für aktuelle Studenten offen.",
+					faq2: "Ich habe noch nie programmiert, kann ich trotzdem teilnehmen?",
+					faq2Answer:
+						"Leider ist dieser Hackathon nur für aktuelle Studenten offen.",
+					faq3: "Ist die Teilnahme am Hackathon kostenlos?",
+					faq3Answer:
+						"Leider ist dieser Hackathon nur für aktuelle Studenten offen.",
+					faq4: "Wem gehört das geistige Eigentum des fertigen Produkts?",
+					faq4Answer:
+						"Leider ist dieser Hackathon nur für aktuelle Studenten offen.",
+					faq5: "Was ist der Preis?",
+					faq5Answer:
+						"Leider ist dieser Hackathon nur für aktuelle Studenten offen.",
+					faq6: "Ich möchte teilnehmen, aber ich wohne weit weg von Heilbronn, wo kann ich übernachten?",
+					faq6Answer:
+						"Leider ist dieser Hackathon nur für aktuelle Studenten offen.",
+					alertTitle: "Wichtig!",
+					alertText:
+						"Wenn Sie sich als Team anmelden, muss sich jedes Teammitglied einzeln anmelden und denselben Teamnamen verwenden.",
+					ok: "OK",
+					signup: "ANMELDEN!",
+					organizer: "Organisator",
+					contact: "kontakt@mail.com",
+					language: "Sprache",
+				},
+			};
+
+			let currentLang = "en";
+
+			function updateLanguage(lang) {
+				document.querySelector("h1").textContent =
+					translations[lang].title;
+				document.querySelector("h1 + p").textContent =
+					translations[lang].subtitle;
+				document.querySelector(
+					".details-text p:nth-child(1)",
+				).textContent = translations[lang].date;
+				document.querySelector(
+					".details-text p:nth-child(2)",
+				).textContent = translations[lang].location;
+				document.querySelector(
+					".details-text p:nth-child(3)",
+				).textContent = translations[lang].address;
+				document.querySelector(
+					".details-text p:nth-child(4)",
+				).textContent = translations[lang].city;
+				document.querySelector(
+					".window-about .window-title-bar span",
+				).textContent = translations[lang].aboutTitle;
+				const aboutPs = document.querySelectorAll(".about-text p");
+				aboutPs[0].textContent = translations[lang].aboutText1;
+				aboutPs[1].textContent = translations[lang].aboutText2;
+				aboutPs[2].textContent = translations[lang].aboutText3;
+				document.querySelector(
+					".window-schedule .window-title-bar span",
+				).textContent = translations[lang].scheduleTitle;
+				const day1Trigger = document.querySelector(
+					".schedule-accordion .accordion-trigger",
+				);
+				day1Trigger.innerHTML =
+					'<span class="accordion-arrow">&rarr;</span> ' +
+					translations[lang].day1;
+				document.querySelector(
+					".schedule-table tr:nth-child(1) td:last-child",
+				).textContent = translations[lang].checkin;
+				document.querySelector(
+					".schedule-table tr:nth-child(2) td:last-child",
+				).textContent = translations[lang].briefing;
+				document.querySelector(
+					".schedule-table tr:nth-child(3) td:last-child",
+				).textContent = translations[lang].hacking1;
+				const day2Trigger = document.querySelectorAll(
+					".schedule-accordion .accordion-trigger",
+				)[1];
+				day2Trigger.innerHTML =
+					'<span class="accordion-arrow">&rarr;</span> ' +
+					translations[lang].day2;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(1) td:last-child",
+					).textContent = translations[lang].hacking2;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(2) td:last-child",
+					).textContent = translations[lang].demos;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(3) td:last-child",
+					).textContent = translations[lang].awards;
+				document.querySelector(
+					".window-notepad .window-title-bar span",
+				).textContent = translations[lang].notepadTitle;
+				const notepadPs =
+					document.querySelectorAll(".notepad-content p");
+				notepadPs[0].textContent = translations[lang].notepadText1;
+				notepadPs[1].innerHTML = translations[lang].notepadText2;
+				notepadPs[2].innerHTML = translations[lang].notepadText3;
+				notepadPs[3].innerHTML = translations[lang].notepadText4;
+				document.querySelector(
+					".window-faq .window-title-bar span",
+				).textContent = translations[lang].faqTitle;
+				const faqTriggers = document.querySelectorAll(
+					".faq-trigger span:last-child",
+				);
+				faqTriggers[0].textContent = translations[lang].faq1;
+				faqTriggers[1].textContent = translations[lang].faq2;
+				faqTriggers[2].textContent = translations[lang].faq3;
+				faqTriggers[3].textContent = translations[lang].faq4;
+				faqTriggers[4].textContent = translations[lang].faq5;
+				faqTriggers[5].textContent = translations[lang].faq6;
+				const faqPanels = document.querySelectorAll(".faq-panel p");
+				faqPanels.forEach(
+					(p) => (p.textContent = translations[lang].faq1Answer),
+				); // all same
+				document.querySelector(
+					".window-alert .window-title-bar span",
+				).textContent = translations[lang].alertTitle;
+				document.querySelector(".alert-body p").textContent =
+					translations[lang].alertText;
+				document.querySelector(".border-btn").textContent =
+					translations[lang].ok;
+				document.querySelectorAll(".retro-btn").forEach((btn) => {
+					if (
+						btn.textContent.trim() === "SIGN UP!" ||
+						btn.textContent.trim() === "ANMELDEN!"
+					) {
+						btn.textContent = translations[lang].signup;
+					}
+				});
+				document.querySelector(
+					".contact-info p:first-child",
+				).textContent = translations[lang].organizer;
+				document.querySelector(
+					".contact-info p:last-child",
+				).textContent = translations[lang].contact;
+				document.querySelector(".language-launcher-label").textContent =
+					translations[lang].language;
+			}
+
 			const windows = document.querySelectorAll(".window");
 			let highestZ = 10;
 
@@ -831,6 +1083,14 @@
 				.querySelector(".faq-launcher-btn")
 				?.addEventListener("click", () => {
 					if (faqWindow) bringWindowToFront(faqWindow);
+				});
+
+			// Language toggle
+			document
+				.querySelector(".language-launcher-btn")
+				?.addEventListener("click", () => {
+					currentLang = currentLang === "en" ? "de" : "en";
+					updateLanguage(currentLang);
 				});
 		</script>
 		<audio

@@ -76,6 +76,10 @@ body {
 	background-image: url("images/folder-icon.png");
 }
 
+.language-launcher-icon {
+	background-image: url("images/question-icon.png");
+}
+
 .schedule-launcher-icon {
 	background-image: url("images/calender-icon.png");
 }
