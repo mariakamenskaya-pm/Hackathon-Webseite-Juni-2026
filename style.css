@@ -658,6 +658,9 @@ body.dragging-window {
 
 .contact-info {
 	font-size: 12px;
+	text-align: center;
+	line-height: 1.5;
+	color: #333;
 }
 
 /* --- Responsive Design (Tablet & Mobile) --- */
