@@ -798,7 +798,10 @@
 				});
 
 				win.addEventListener("pointerdown", (e) => {
-					// Only left mouse button (or touch/pen).
+					// Disable drag for touch-based input (mobile) to keep windows static.
+					if (e.pointerType === "touch") return;
+
+					// Only left mouse button (or pen).
 					if (e.pointerType === "mouse" && e.button !== 0) return;
 					if (isInteractiveEl(e.target)) return;
 
