@@ -716,6 +716,16 @@
 				});
 			}
 
+			const isMobilePhone = () => {
+				const ua = navigator.userAgent || "";
+				// Treat smartphones as mobile; keep tablets draggable.
+				return (
+					/Android.*Mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobi/i.test(
+						ua,
+					) && !/iPad/i.test(ua)
+				);
+			};
+
 			const windows = document.querySelectorAll(".window");
 			let highestZ = 10;
 
@@ -798,8 +808,8 @@
 				});
 
 				win.addEventListener("pointerdown", (e) => {
-					// Disable drag for touch-based input (mobile) to keep windows static.
-					if (e.pointerType === "touch") return;
+					// Disable drag for smartphone/mobile browsers.
+					if (isMobilePhone()) return;
 
 					// Only left mouse button (or pen).
 					if (e.pointerType === "mouse" && e.button !== 0) return;
