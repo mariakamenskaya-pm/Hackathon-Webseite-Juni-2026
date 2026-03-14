@@ -524,11 +524,17 @@
 					day1: "Day 1: 12/06/2026 Friday",
 					checkin: "Check-in, welcome, and intro",
 					briefing: "Challenge briefing + team formation",
-					hacking1: "Hacking sessions + mentor rounds",
+					hackingSession: "Hacking session",
+					hackingMentor: "Hacking sessions + mentor rounds",
+					lunch: "Lunch",
+					dinner: "Dinner",
 					day2: "Day 2: 13/06/2026 Saturday",
-					hacking2: "Final hacking + preparation",
-					demos: "Demos & pitches",
+					breakfast: "Breakfast",
+					hackingSessions: "Hacking sessions",
+					pitches: "Pitches",
+					coffeebreak: "Coffee break",
 					awards: "Jury deliberation + awards",
+					closing: "Group photo + closing remarks",
 					notepadTitle: "CODE YOUR STATE!.txt",
 					notepadText1:
 						"Municipal systems shape our everyday lives - housing, mobility, administration, services. Yet many of these core processes were designed decades ago.",
@@ -588,12 +594,18 @@
 					scheduleTitle: "Tagesprogramm (vorläufig)",
 					day1: "Tag 1: 12/06/2026 Freitag",
 					checkin: "Check-in, Begrüßung und Einführung",
-					briefing: "Aufgaben-Briefing + Team-Bildung",
-					hacking1: "Hacking-Sessions + Mentor-Runden",
+					briefing: "Challenge Briefing + Teambildung",
+					hackingSession: "Hacking Session",
+					hackingMentor: "Hacking Sessions + Mentor-Runden",
+					lunch: "Mittagessen",
+					dinner: "Abendessen",
 					day2: "Tag 2: 13/06/2026 Samstag",
-					hacking2: "Finales Hacking + Vorbereitung",
-					demos: "Demos & Pitches",
-					awards: "Jury-Beratung + Auszeichnungen",
+					breakfast: "Frühstück",
+					hackingSessions: "Hacking Sessions",
+					pitches: "Pitches",
+					coffeebreak: "Kaffeepause",
+					awards: "Jury-Bewertung + Preisverleihung",
+					closing: "Gruppenfoto + Abschluss",
 					notepadTitle: "CODE YOUR STATE!.txt",
 					notepadText1:
 						"Kommunale Systeme prägen unser tägliches Leben - Wohnung, Mobilität, Verwaltung, Dienstleistungen. Doch viele dieser Kernprozesse wurden vor Jahrzehnten entworfen.",
@@ -681,7 +693,19 @@
 				).textContent = translations[lang].briefing;
 				document.querySelector(
 					".schedule-table tr:nth-child(3) td:last-child",
-				).textContent = translations[lang].hacking1;
+				).textContent = translations[lang].hackingSession;
+				document.querySelector(
+					".schedule-table tr:nth-child(4) td:last-child",
+				).textContent = translations[lang].lunch;
+				document.querySelector(
+					".schedule-table tr:nth-child(5) td:last-child",
+				).textContent = translations[lang].hackingMentor;
+				document.querySelector(
+					".schedule-table tr:nth-child(6) td:last-child",
+				).textContent = translations[lang].dinner;
+				document.querySelector(
+					".schedule-table tr:nth-child(7) td:last-child",
+				).textContent = translations[lang].hackingSessions;
 				const day2Trigger = document.querySelectorAll(
 					".schedule-accordion .accordion-trigger",
 				)[1];
@@ -692,17 +716,37 @@
 					.querySelectorAll(".schedule-table")[1]
 					.querySelector(
 						"tr:nth-child(1) td:last-child",
-					).textContent = translations[lang].hacking2;
+					).textContent = translations[lang].breakfast;
 				document
 					.querySelectorAll(".schedule-table")[1]
 					.querySelector(
 						"tr:nth-child(2) td:last-child",
-					).textContent = translations[lang].demos;
+					).textContent = translations[lang].hackingSessions;
 				document
 					.querySelectorAll(".schedule-table")[1]
 					.querySelector(
 						"tr:nth-child(3) td:last-child",
+					).textContent = translations[lang].lunch;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(4) td:last-child",
+					).textContent = translations[lang].pitches;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(5) td:last-child",
+					).textContent = translations[lang].coffeebreak;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(6) td:last-child",
 					).textContent = translations[lang].awards;
+				document
+					.querySelectorAll(".schedule-table")[1]
+					.querySelector(
+						"tr:nth-child(7) td:last-child",
+					).textContent = translations[lang].closing;
 				document.querySelector(
 					".window-notepad .window-title-bar span",
 				).textContent = translations[lang].notepadTitle;
