@@ -164,19 +164,13 @@ body.dragging-window {
 	box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
 	margin-bottom: 40px;
 	width: 100%;
-	/* Added for stability */
-	touch-action: none; /* Prevents scrolling while dragging on tablet/desktop */
+	/* Soft mobile behavior: allow native scrolling inside windows */
+	touch-action: auto;
 	user-select: none; /* Prevents text selection while dragging */
 	position: relative; /* Starts relative, JS will switch to absolute */
 	transition:
 		transform 0.1s ease-out,
 		height 0.2s ease-in-out;
-}
-
-@media (max-width: 768px) {
-	.window {
-		touch-action: auto; /* Allow native page scrolling on mobile phones */
-	}
 }
 
 /* Add a "active" class to bring the dragged window to the very top */
