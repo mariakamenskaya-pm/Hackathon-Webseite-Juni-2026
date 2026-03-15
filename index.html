@@ -770,9 +770,10 @@
 						translations[lang][questionKey];
 				});
 				const faqPanels = document.querySelectorAll(".faq-panel p");
-				faqPanels.forEach(
-					(p) => (p.textContent = translations[lang].faq1Answer),
-				); // all same
+				faqPanels.forEach((p, index) => {
+					const answerKey = "faq" + (index + 1) + "Answer";
+					p.textContent = translations[lang][answerKey];
+				});
 				document.querySelector(
 					".window-alert .window-title-bar span",
 				).textContent = translations[lang].alertTitle;
