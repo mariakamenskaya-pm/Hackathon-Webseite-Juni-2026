@@ -656,11 +656,27 @@ body.dragging-window {
 	color: #ffffff; /* White text */
 }
 
-.contact-info {
+.legal-links {
 	font-size: 12px;
 	text-align: center;
 	line-height: 1.5;
 	color: #333;
+	margin-bottom: 20px;
+	gap: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.legal-link {
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.legal-link:hover {
+	color: #000080;
+	text-decoration: underline;
 }
 
 /* --- Responsive Design (Tablet & Mobile) --- */
