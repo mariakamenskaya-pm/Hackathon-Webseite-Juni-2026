@@ -126,7 +126,7 @@
 							src="images/coding-people.JPG"
 							alt="People coding at hackathon"
 						/>
-						<button class="retro-btn">SIGN UP!</button>
+						<button class="retro-btn">register now!</button>
 					</div>
 				</div>
 			</div>
@@ -599,7 +599,7 @@
 					alertText:
 						"If you are registering as a team, each team member must register individually and use the exact same team name.",
 					ok: "OK",
-					signup: "SIGN UP!",
+					signup: "register now!",
 					organizer: "Organizer",
 					contact: "pblcmkrs@gmail.com",
 					language: "Language",
@@ -674,7 +674,7 @@
 					alertText:
 						"Wenn ihr euch als Team anmeldet, muss sich jedes Teammitglied einzeln anmelden und denselben Teamnamen verwenden.",
 					ok: "OK",
-					signup: "ANMELDEN!",
+					signup: "register now!",
 					organizer: "Organisator",
 					contact: "pblcmkrs@gmail.com",
 					language: "Sprache",
@@ -827,12 +827,8 @@
 				document.querySelector(".border-btn").textContent =
 					translations[lang].ok;
 				document.querySelectorAll(".retro-btn").forEach((btn) => {
-					if (
-						btn.textContent.trim() === "SIGN UP!" ||
-						btn.textContent.trim() === "ANMELDEN!"
-					) {
-						btn.textContent = translations[lang].signup;
-					}
+					if (btn.classList.contains("border-btn")) return;
+					btn.textContent = translations[lang].signup;
 				});
 				const impressumWindowTitle = document.querySelector(
 					".window-impressum .window-title-bar span",
