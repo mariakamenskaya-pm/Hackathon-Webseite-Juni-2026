@@ -1087,20 +1087,25 @@
 					}
 				});
 			});
-			// 1. Find all buttons on the page
+			// 1. Find all retro buttons on the page and bind the signup link to the sign-up button text.
+			const signUpUrl = "https://tally.so/r/b5WZNE";
 			const allButtons = document.querySelectorAll(".retro-btn");
 
 			allButtons.forEach((button) => {
-				// 2. Check if the button text matches "SIGN UP!"
-				if (button.textContent.trim() === "SIGN UP!") {
-					button.addEventListener("click", () => {
-						const googleDocUrl = "https://tally.so/r/b5WZNE";
+				if (button.classList.contains("border-btn")) return; // skip alert OK button
+				const text = button.textContent.trim();
+				const signUpText =
+					currentLang === "de"
+						? translations.de.signup
+						: translations.en.signup;
 
-						window.open(
-							googleDocUrl,
-							"_blank",
-							"noopener,noreferrer",
-						);
+				if (
+					text === signUpText ||
+					text === "SIGN UP!" ||
+					text === "ANMELDEN!"
+				) {
+					button.addEventListener("click", () => {
+						window.open(signUpUrl, "_blank", "noopener,noreferrer");
 					});
 				}
 			});
