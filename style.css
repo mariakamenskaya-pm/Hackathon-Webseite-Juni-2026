@@ -173,6 +173,10 @@ body.dragging-window {
 		height 0.2s ease-in-out;
 }
 
+.window-alert {
+	display: none !important;
+}
+
 /* Add a "active" class to bring the dragged window to the very top */
 .window-active {
 	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2); /* Add a deeper shadow when moving */
