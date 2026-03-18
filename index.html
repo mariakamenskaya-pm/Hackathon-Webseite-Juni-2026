@@ -1489,6 +1489,43 @@
 			});
 
 			showLandingWindows();
+
+			// 1. Define the Google Form URL
+			const SIGNUP_URL = "https://forms.gle/SF4TGuDDTGHz5rxQA";
+
+			// 2. Add a global click listener with console diagnostics
+			document.addEventListener("click", (e) => {
+				// Check if the clicked element (or its parent) is a .retro-btn
+				const btn = e.target.closest(".retro-btn");
+
+				// If it's not a retro button, or it's the "OK" button in the alert, ignore it.
+				if (!btn || btn.classList.contains("border-btn")) return;
+
+				// --- CONSOLE DIAGNOSTICS ---
+				console.log("--- Signup Button Click Detected ---");
+				console.log("Button Text:", btn.textContent.trim());
+				console.log("Current Language:", currentLang);
+
+				// Check for popup blockers
+				console.log("Attempting to open link...");
+
+				const newWindow = window.open(
+					SIGNUP_URL,
+					"_blank",
+					"noopener,noreferrer",
+				);
+
+				if (newWindow) {
+					console.log("✅ Success: Window opened.");
+				} else {
+					console.error(
+						"❌ Error: Pop-up was blocked by the browser.",
+					);
+					alert(
+						"Please allow pop-ups for this site to open the registration form.",
+					);
+				}
+			});
 		</script>
 		<audio
 			id="error-sound"
