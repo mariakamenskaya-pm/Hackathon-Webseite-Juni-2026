@@ -156,6 +156,7 @@ body.dragging-window {
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	margin-top: 150px;
 }
 
 .window {
@@ -174,7 +175,7 @@ body.dragging-window {
 }
 
 .window-alert {
-	display: none !important;
+	display: block !important;
 }
 
 .window.window-faq-button {
