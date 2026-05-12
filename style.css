@@ -581,10 +581,12 @@ body.dragging-window {
 
 /* --- Prize Window --- */
 .window-prize {
-	width: 380px;
-	align-self: flex-end;
-	margin-right: 30px;
-	margin-top: 30px;
+	position: absolute;
+	top: 280px;
+	right: max(20px, calc(50% - 460px));
+	width: 320px;
+	margin: 0;
+	z-index: 5;
 }
 
 .prize-content {
@@ -840,6 +842,13 @@ body.dragging-window {
 		margin-left: 0;
 		margin-right: 0;
 		align-self: center;
+	}
+
+	.window-prize {
+		position: static;
+		top: auto;
+		right: auto;
+		margin-top: 20px;
 	}
 
 	/* Prevent schedule from overlapping the about window on mobile */
