@@ -97,15 +97,24 @@
 			<div class="window-content prize-content">
 				<ul class="prize-list">
 					<li>
-						<span class="prize-medal prize-medal-gold" aria-hidden="true"></span>
+						<span
+							class="prize-medal prize-medal-gold"
+							aria-hidden="true"
+						></span>
 						<span class="prize-text">1st place: €1500</span>
 					</li>
 					<li>
-						<span class="prize-medal prize-medal-silver" aria-hidden="true"></span>
+						<span
+							class="prize-medal prize-medal-silver"
+							aria-hidden="true"
+						></span>
 						<span class="prize-text">2nd place: €1000</span>
 					</li>
 					<li>
-						<span class="prize-medal prize-medal-bronze" aria-hidden="true"></span>
+						<span
+							class="prize-medal prize-medal-bronze"
+							aria-hidden="true"
+						></span>
 						<span class="prize-text">3rd place: €500</span>
 					</li>
 				</ul>
@@ -235,7 +244,7 @@
 										</tr>
 										<tr>
 											<td class="time-col">
-												19:30–00:00
+												19:30–22:00
 											</td>
 											<td class="desc-col">
 												Hacking sessions
@@ -935,13 +944,16 @@
 				);
 				if (prizeTextEls[0])
 					prizeTextEls[0].textContent =
-						translations[lang].prize1 || prizeTextEls[0].textContent;
+						translations[lang].prize1 ||
+						prizeTextEls[0].textContent;
 				if (prizeTextEls[1])
 					prizeTextEls[1].textContent =
-						translations[lang].prize2 || prizeTextEls[1].textContent;
+						translations[lang].prize2 ||
+						prizeTextEls[1].textContent;
 				if (prizeTextEls[2])
 					prizeTextEls[2].textContent =
-						translations[lang].prize3 || prizeTextEls[2].textContent;
+						translations[lang].prize3 ||
+						prizeTextEls[2].textContent;
 				launcherConfigs.forEach(({ parent, key }) => {
 					const label = document.querySelector(
 						`${parent} .desktop-launcher-label`,
