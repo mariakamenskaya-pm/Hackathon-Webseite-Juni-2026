@@ -8,6 +8,19 @@
 	</head>
 	<body>
 		<div class="desktop-launchers">
+			<div class="desktop-launcher prize-launcher">
+				<button
+					type="button"
+					class="desktop-launcher-btn prize-launcher-btn"
+				>
+					<div
+						class="desktop-launcher-icon prize-launcher-icon"
+						aria-hidden="true"
+					></div>
+					<span class="desktop-launcher-label">Prizes</span>
+				</button>
+			</div>
+
 			<div class="desktop-launcher language-launcher">
 				<button
 					type="button"
@@ -485,6 +498,29 @@
 				</div>
 			</div>
 
+			<div class="window window-prize">
+				<div class="window-title-bar">
+					<span>Prizes</span>
+					<span class="window-controls">X</span>
+				</div>
+				<div class="window-content prize-content">
+					<ul class="prize-list">
+						<li>
+							<span class="prize-medal prize-medal-gold" aria-hidden="true"></span>
+							<span class="prize-text">1st place: €1500</span>
+						</li>
+						<li>
+							<span class="prize-medal prize-medal-silver" aria-hidden="true"></span>
+							<span class="prize-text">2nd place: €1000</span>
+						</li>
+						<li>
+							<span class="prize-medal prize-medal-bronze" aria-hidden="true"></span>
+							<span class="prize-text">3rd place: €500</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
 			<div class="window window-alert">
 				<div class="window-title-bar">
 					<span>Important!</span>
@@ -617,6 +653,11 @@
 					scheduleLauncher: "Schedule",
 					notepadLauncher: "Hackathon",
 					faqLauncher: "FAQ",
+					prizeLauncher: "Prizes",
+					prizeTitle: "Prizes",
+					prize1: "1st place: €1500",
+					prize2: "2nd place: €1000",
+					prize3: "3rd place: €500",
 					learnMore: "Learn more",
 					impressumTitle: "Impressum",
 					datenschutzTitle: "Datenschutz",
@@ -693,6 +734,11 @@
 					scheduleLauncher: "Zeitplan",
 					notepadLauncher: "Hackathon",
 					faqLauncher: "FAQ",
+					prizeLauncher: "Preise",
+					prizeTitle: "Preise",
+					prize1: "1. Platz: 1500 €",
+					prize2: "2. Platz: 1000 €",
+					prize3: "3. Platz: 500 €",
 					learnMore: "Erfahre mehr",
 					impressumTitle: "Impressum",
 					datenschutzTitle: "Datenschutz",
@@ -868,14 +914,34 @@
 						translations[lang].datenschutzText ||
 						"Datenschutz: Alle personenbezogenen Daten werden entsprechend der geltenden DSGVO verarbeitet. Es werden nur die zwingend notwendigen Informationen im Rahmen der Veranstaltung erhoben.";
 
-				// Translate desktop launchers (Language / About / Schedule / Hackathon / FAQ)
+				// Translate desktop launchers (Prizes / Language / About / Schedule / Hackathon / FAQ)
 				const launcherConfigs = [
+					{ parent: ".prize-launcher", key: "prizeLauncher" },
 					{ parent: ".language-launcher", key: "language" },
 					{ parent: ".about-launcher", key: "aboutLauncher" },
 					{ parent: ".schedule-launcher", key: "scheduleLauncher" },
 					{ parent: ".notepad-launcher", key: "notepadLauncher" },
 					{ parent: ".faq-launcher", key: "faqLauncher" },
 				];
+
+				const prizeTitleEl = document.querySelector(
+					".window-prize .window-title-bar span",
+				);
+				if (prizeTitleEl)
+					prizeTitleEl.textContent =
+						translations[lang].prizeTitle || "Prizes";
+				const prizeTextEls = document.querySelectorAll(
+					".window-prize .prize-text",
+				);
+				if (prizeTextEls[0])
+					prizeTextEls[0].textContent =
+						translations[lang].prize1 || prizeTextEls[0].textContent;
+				if (prizeTextEls[1])
+					prizeTextEls[1].textContent =
+						translations[lang].prize2 || prizeTextEls[1].textContent;
+				if (prizeTextEls[2])
+					prizeTextEls[2].textContent =
+						translations[lang].prize3 || prizeTextEls[2].textContent;
 				launcherConfigs.forEach(({ parent, key }) => {
 					const label = document.querySelector(
 						`${parent} .desktop-launcher-label`,
@@ -1286,7 +1352,13 @@
 			const scheduleWindow = document.querySelector(".window-schedule");
 			const notepadWindow = document.querySelector(".window-notepad");
 			const faqWindow = document.querySelector(".window-faq");
+			const prizeWindow = document.querySelector(".window-prize");
 
+			document
+				.querySelector(".prize-launcher-btn")
+				?.addEventListener("click", () => {
+					if (prizeWindow) bringWindowToFront(prizeWindow);
+				});
 			document
 				.querySelector(".about-launcher-btn")
 				?.addEventListener("click", () => {
@@ -1323,6 +1395,7 @@
 				".window-about",
 				".window-schedule",
 				".window-faq",
+				".window-prize",
 				".window-impressum",
 				".window-datenschutz",
 				".window-alert",
@@ -1458,6 +1531,9 @@
 					?.style.setProperty("display", "");
 				document
 					.querySelector(".window-faq")
+					?.style.setProperty("display", "");
+				document
+					.querySelector(".window-prize")
 					?.style.setProperty("display", "");
 				location.hash = "";
 				updateLanguage(currentLang);
